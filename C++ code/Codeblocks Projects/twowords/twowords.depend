@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1436240670 source:/media/sf_VB_Share/twowords/twowords.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<algorithm>
+	<string>
+

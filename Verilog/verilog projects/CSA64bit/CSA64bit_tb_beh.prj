@@ -1,0 +1,8 @@
+verilog work "../../../../../../../../home/austinmw/Desktop/Logic Modules/FA_str.v"
+verilog work "../../../../../../../../home/austinmw/Desktop/Logic Modules/FA4bit.v"
+verilog work "../../../../../../../../home/austinmw/Desktop/RCA32bit/RCA32bit.v"
+verilog work "../../../../../../../../home/austinmw/Desktop/mux_1x2.v"
+verilog work "verification_csa64bit.v"
+verilog work "CSA64bit.v"
+verilog work "CSA64bit_tb.v"
+verilog work "/mnt/support/software/linux/all/x86_64/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v"

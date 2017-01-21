@@ -1,0 +1,41 @@
+COMPILING:
+
+If I have:
+main.c
+external.h
+external.c
+
+compile:
+gcc -c external.c
+gcc -c main.c
+gcc external.o main.o -o main
+
+or compile in one line:
+gcc main.c external.c -o main
+
+compile with debuggign info:
+gcc -g main_cll.c circular_linked_list.c -o main
+(-g produces debugging information in the operating system's native format)
+
+
+
+
+ASSEMBLY:
+
+generate assembly code file:
+
+Option 1:
+gcc -S main.c (produces main.s)
+(Stop after the stage of compilation proper; do not assemble. The output is in the form of an assembler code file for each non-assembler input file specified.)
+
+Option 2:
+gcc -c main.c  (produces main.o)
+otool -tvV main.o > assembly.txt  (create txt file with assembly)
+(or could do: | assembly.s)
+
+otool stuff:
+otool man
+-t print the text section (disassemble with -v)
+-v print verbosely (symbolically) when possible
+-V print disassembled operands symbolically
+-d print the data section

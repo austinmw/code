@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1432667871 source:/media/sf_VB_Share/divisorsum/main.cpp
+	<iostream>
+
+1432668840 source:/media/sf_VB_Share/divisorsum/divisorsum.cpp
+	<iostream>
+

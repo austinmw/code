@@ -1,0 +1,69 @@
+
+Remember to compile with -g flag (debugging info):
+gcc -g file.c
+
+If you have the source (more readable than disassembled version)
+gcc -S file.c
+cat file.s
+
+Display assembler contents of executable sections using -d option (& intel syntax)
+gobjdump -M intel -d a.out
+
+Display assembler contents of all sections using -D option (& intel syntax)
+gobjdump -M intel -D a.out
+
+Display object format specific file header contents using -p option:
+gobjdump -p a.out
+
+Display debug information using -g option
+gobjdump -g a.out
+
+Display the contents of symbol table (or tables) using the -t option
+gobjdump -t a.out
+
+other:
+otool -tvV a.out
+
+
+-----
+LLDB
+lldb commands all of the form:
+<noun> <verb> [-options [option-value]] [argument [argument...]]
+
+opening:
+lldb a.out
+or, lldb file /path/to/program
+
+see program:
+list
+
+disassemble:
+di -n main
+
+breakpoints:
+breakpoint set -f file.c -l 12    (-f for file, -l for line)
+or
+breakpoint set -n main (-n for name of function)
+
+aliases:
+command alias b breakpoint  (sets b to breakpoint command)
+command unalias b
+
+launching:
+launching a program (any of these):
+process launch
+run
+r
+
+register info:
+re r -a (register read all)
+register read <name>
+e.g. re r <reg name>
+e.g. re r rip   (instruction pointer)
+
+
+-----
+Class-dump (not installed yet)
+This is a command-line utility for examining the Objective-C runtime information stored in Mach-O files. It generates declarations for the classes, categories and protocols. This is the same information provided by using ‘otool -ov’, but presented as normal Objective-C declarations, so it is much more compact and readable.
+
+

@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1437085781 source:/home/austin/Desktop/sfmltest/main.cpp
+	<SFML/Graphics.hpp>
+
+1437171164 source:/home/austin/Desktop/sfml codeblocks/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1437171164 source:/home/austin/Desktop/ec327/My Programs/sfml template [codeblocks]/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1437171164 source:/home/austin/Desktop/ec327/Codeblocks/sfml template [codeblocks]/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1437253405 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/sfml template [codeblocks]/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+

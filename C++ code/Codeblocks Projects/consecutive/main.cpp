@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    int length = atoi(argv[1]);
+    int count = 0;
+    int x, i;
+    int temp;
+
+    while (!cin.eof() && count != length)
+    {
+        cin >> x;
+        if (x == temp+1)
+        {
+            count++;
+        }
+        else
+            count = 1;
+        temp = x;
+    }
+
+    if (count == length)
+    {
+        cout << "Sequence found: ";
+
+        for (i = x - length + 1; i <= x; i++)
+        {
+
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}

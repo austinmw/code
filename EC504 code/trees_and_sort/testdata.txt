@@ -1,0 +1,13 @@
+apple 1
+kiwi 2
+banana 3
+orange 4
+strawberry 5
+grape 6
+beef 7
+coffee 8
+tea 9
+banana
+apple
+strawberry
+coffee

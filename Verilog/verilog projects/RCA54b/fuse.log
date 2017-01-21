@@ -1,0 +1,28 @@
+Running: /mnt/support/software/linux/all/x86_64/Xilinx/14.2/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /ad/eng/users/a/u/austinmw/Desktop/RCA54b/RCA64b_tb_isim_beh.exe -prj /ad/eng/users/a/u/austinmw/Desktop/RCA54b/RCA64b_tb_beh.prj work.RCA64b_tb work.glbl 
+ISim P.28xd (signature 0x54af6ca1)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/RCA54b/../../../../../../../../home/austinmw/Desktop/Logic Modules/FA_str.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/RCA54b/../../../../../../../../home/austinmw/Desktop/Logic Modules/FA4bit.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/RCA54b/Verification_64b.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/RCA54b/RCA64b.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/RCA54b/RCA64b_tb.v" into library work
+Analyzing Verilog file "/mnt/support/software/linux/all/x86_64/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 93896 KB
+Fuse CPU Usage: 1770 ms
+Compiling module Verification_64b
+Compiling module FA_str
+Compiling module FA4bit
+Compiling module RCA64b
+Compiling module RCA64b_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 6 Verilog Units
+Built simulation executable /ad/eng/users/a/u/austinmw/Desktop/RCA54b/RCA64b_tb_isim_beh.exe
+Fuse Memory Usage: 1178464 KB
+Fuse CPU Usage: 1800 ms
+GCC CPU Usage: 370 ms

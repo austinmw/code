@@ -1,0 +1,10 @@
+in terminal:
+	
+cdecl
+
+
+cdecl> explain int (&fp)(int, char)
+declare fp as reference to function (int, char) returning int
+
+cdecl> explain int (*fp)(int, char)
+declare fp as pointer to function (int, char) returning int

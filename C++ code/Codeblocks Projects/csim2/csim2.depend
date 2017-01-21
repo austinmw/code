@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1437939324 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/csim2/main.cpp
+	<SFML/Graphics.hpp>
+	<random>
+	<functional>
+	<cstdlib>
+	<cmath>
+	<vector>
+	<iostream>
+

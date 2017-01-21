@@ -1,0 +1,26 @@
+A .java file contains Java code.
+
+A .class file is the .java file compiled
+
+A .jar file is an executable java package.
+
+Eclipse compiles .java files to create .class files and you can package them in an executable .jar file.
+
+
+
+
+A .java file contains your Java source code while a .class file contains the Java bytecode produced by the Java compiler. It is your .class files that run on the JVM to execute a Java application. It is the .class files you will use when you deploy your applet.
+
+
+
+JavaFX is the GUI library most current for Java 8
+java -version
+
+
+
+to compile in terminal:
+javac filename.java
+	this creates a classname.class file
+to run:
+java classname  (without the .class extension)
+

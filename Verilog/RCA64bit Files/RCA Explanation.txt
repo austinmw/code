@@ -1,0 +1,6 @@
+Austin Welch
+EC413
+RCA Explanation
+
+The AND and OR gate delay are each set to 1. This gives the 1-bit FA a gate delay of 2. The longest path for the 64-bit RCA is from the input to the c_out, so it has to pass through all 64 FAs. This means the gate delay is 2*64 = 128.
+

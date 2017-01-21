@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1433978909 source:/media/sf_VB_Share/consecutive/main.cpp
+	<iostream>
+	<cstdlib>
+
+1434050279 source:/media/sf_VB_Share/consecutive/consecutive.cpp
+	<iostream>
+	<cstdlib>
+

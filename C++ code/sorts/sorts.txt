@@ -1,0 +1,42 @@
+
+
+Quicksort:
+Time Complexity: Best: O(nlog(n)), Average: O(nlog(n)), Worst: O(n^2)
+Space Complexity: Worst: O(log(n))
+
+Mergesort:
+Time Complexity: Best: O(nlog(n)), Average: O(nlog(n)), Worst: O(nlog(n))
+Space Complexity: Worst: O(n)
+
+Timsort:
+Time Complexity: Best: O(n), Average: O(nlog(n)), Worst: O(nlog(n))
+Space Complexity: Worst: O(n)
+
+Heapsort: 
+Time Complexity: Best: O(nlog(n)), Average: O(nlog(n)), Worst: O(nlog(n))
+Space Complexity: Worst: O(1)
+
+Bubble Sort:
+Time Complexity: Best: O(n), Average: O(n^2), Worst: O(n^2)
+Space Complexity: Worst: O(1)
+
+Insertion Sort: 
+Time Complexity: Best: O(n), Average: O(n^2), Worst: O(n^2)
+Space Complexity: Worst: O(1)
+
+Selection Sort:
+Time Complexity: Best: O(n^2), Average: O(n^2), Worst: O(n^2)
+Space Complexity: Worst: O(1)
+
+Shell Sort:
+Time Complexity: Best: O(n), Average: O((nlog(n))^2), Worst: O((nlog(n))^2)
+Space Complexity: Worst: O(1)
+
+Bucket Sort:
+Time Complexity: Best: O(n+k), Average: O(n+k), Worst: O(n^2)
+Space Complexity: Worst: O(n)
+
+Radix Sort:
+Time Complexity: Best: O(nk), Average: O(n+k), Worst: O(n^2)
+Space Complexity: Worst: O(n+k)
+

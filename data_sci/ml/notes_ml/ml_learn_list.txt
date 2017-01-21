@@ -1,0 +1,4 @@
+coursera machine learning
+stanford machine learning
+stanford convolutional neural networks
+python machine learning book

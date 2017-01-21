@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1436036771 source:/media/sf_VB_Share/tttwinner/tttwinner.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+

@@ -1,0 +1,35 @@
+Running: /mnt/support/software/linux/all/x86_64/Xilinx/14.2/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/alu_top_tb_isim_beh.exe -prj /ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/alu_top_tb_beh.prj work.alu_top_tb work.glbl 
+ISim P.28xd (signature 0x54af6ca1)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/../../../../../../../../../home/austinmw/Desktop/Logic Modules/mux_1x2.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/../../../../../../../../../home/austinmw/Desktop/Logic Modules/FA_str.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/mux_8to1.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/ALU.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/../../../../../../../../../home/austinmw/Desktop/Logic Modules/Register.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/para_ALU.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/alu_top.v" into library work
+Analyzing Verilog file "/ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/alu_top_tb.v" into library work
+Analyzing Verilog file "/mnt/support/software/linux/all/x86_64/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 93876 KB
+Fuse CPU Usage: 1190 ms
+Compiling module mux_1x2
+Compiling module FA_str
+Compiling module mux_8to1
+Compiling module ALU
+Compiling module para_ALU(W=32)
+Compiling module Register(W=32)
+Compiling module Register(W=1)
+Compiling module alu_top
+Compiling module alu_top_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 10 Verilog Units
+Built simulation executable /ad/eng/users/a/u/austinmw/Desktop/verilog projects/Lab_5/alu_top_tb_isim_beh.exe
+Fuse Memory Usage: 652100 KB
+Fuse CPU Usage: 1240 ms
+GCC CPU Usage: 620 ms

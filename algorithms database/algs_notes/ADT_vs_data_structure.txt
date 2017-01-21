@@ -1,0 +1,22 @@
+To put it simple, ADT is a logical description and data structure is concrete. 
+ADT is the logical picture of the data and the operations to manipulate the component elements of the data. 
+Data structure is the actual representation of the data during the implementation and the algorithms to manipulate the data elements. 
+ADT is in the logical level and data structure is in the implementation level.
+
+
+As you can see, ADT is implementation independent. 
+For example, it only describes what a data type List consists (data) and what are the operations it can perform, 
+but it has no information about how the List is actually implemented.
+Whereas data structure is implementation dependent, as in the same example, it is about how the List implemented ie., 
+using array or linked list. Ultimately, data structure is how we implement the data in an abstract data type.
+
+
+Example: Is Linked List an ADT or is it a Data Structure, or both?
+
+From Wikipedia on ADT: In computing, an abstract data type (ADT) is a mathematical model for a certain class of data structures 
+that have similar behavior so, linked list is an ADT, and every ADT is also a data structure, so linked list is both.
+
+EDIT: 
+However, notice that singly-linked-list, and doubly-linked-list, both have the same operations and the same complexity for 
+these operations, so they are both a linked list ADT, and we do not distinguish between them as ADT concerned. 
+But they are different data structures!

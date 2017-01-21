@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1437364786 source:/home/austin/Desktop/SpriteSheet Animation/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1438058640 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/SpriteSheet Animation/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+

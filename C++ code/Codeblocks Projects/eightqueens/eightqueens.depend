@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1435628767 source:/media/sf_VB_Share/eightqueens/eightqueens.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+

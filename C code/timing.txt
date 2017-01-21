@@ -1,0 +1,13 @@
+Generally, to check algorithm performance, you
+
+take the average of several attempts.
+time the performance of several different sized containers.
+In pseudocode:
+
+For N in [2..9]:
+	Fill container with 10^N items
+	lookupTime = 0;
+	generate M values in range
+	for i in [1..M]:
+		lookupTime += duration(lookup(value[i]))
+	performance[N] = lookupTime/M;

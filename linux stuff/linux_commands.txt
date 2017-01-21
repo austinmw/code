@@ -1,0 +1,102 @@
+| send to program or utility
+> send to file or stream
+>> append to file or stream
+grep [file] search file for words
+diff [f1] [f2] show file1 as < file2 as > with differences
+
+file permissions:
+
+d directory
+- file
+rwx rwx rwx
+u   g   o   (user, grp, other)
+
+chmod grp+w file
+(give file write permissions)
+
+set permissions for every group at once
+chmod 754 bacon
+7, 5, 4 represents individual permissions for (in this order) 
+user, group, other
+
+4: read
+2: write 
+1: execute
+0: none
+
+e.g. 754= rwxrw-r--
+e.g. 777= rwxrwxrwx
+
+checksum:
+SHA-1:
+sha1sum [file] -> hash
+
+[file] | grep [website hash]
+(does this match this) red? match : nothing
+
+
+>> Tar is a file archiving technology which combine multiple files to a single file archive.
+>> Gzip is a compression methord to redusethe file size.
+>> .tar.gz means the combination of tar and gzip to compress and combine files.
+
+z: gzip
+x: extract
+c: compress
+v: verbose
+f: file
+
+
+apt-get stands for advanced package manager
+apt-get update
+
+java -version
+
+gdb:
+gcc file.c -g -o executablename
+gcc executable
+list (print code)
+disas main (show machine code)
+
+
+
+some vim commands:
+wildcard: *.txt
+
+
+
+regex:
+.*\.txt
+
+find . -type f -print0 | xargs -0 egrep -iHn "some search string"
+
+
+find . -type f -name "*kara*"
+
+
+github:
+git clone https://www.github.com/austinmw/webdev.git
+cd webdev
+git rm -rf .
+[copy files to here]
+git add .
+git commit -a -m "my commit"
+git push origin gh-pages
+
+
+
+FUNCTIONS I ADDED TO ~/.bash_profile:
+
+CC (cd to C code directory)
+lazytouch <filename> (create and open file)
+FF <string> (find file name containing string in current directory)
+GG <stringL (find file contents containing string in current directory)
+
+
+
+
+
+
+
+
+
+

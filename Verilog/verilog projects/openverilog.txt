@@ -1,0 +1,2 @@
+source /ad/eng/opt/64/Xilinx/14.2/ISE_DS/settings64.sh; ise &
+

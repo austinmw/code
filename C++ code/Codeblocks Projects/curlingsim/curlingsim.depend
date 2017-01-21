@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1437691023 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/curlingsim/main.cpp
+	<SFML/Graphics.hpp>
+	<random>
+	<functional>
+	<cstdlib>
+	<cmath>
+	<iostream>
+	<vector>
+

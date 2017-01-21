@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1439234574 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/snake2/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<string>
+	<fstream>
+	<sstream>
+

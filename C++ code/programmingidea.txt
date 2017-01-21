@@ -1,0 +1,15 @@
+run function over an over with random list increasing in length each time
+
+get the inputs first and then use them (not sure if rand() takes time)
+
+
+get array vector of count and runtime
+
+figure out how to graph this quickly/cleanly
+
+figure out how to approximate/fit the O()
+
+possibly add a gui for inputting total size or random list increase gradient
+
+add it to github
+

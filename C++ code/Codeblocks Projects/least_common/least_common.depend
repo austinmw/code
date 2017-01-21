@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1436477826 source:/media/sf_VB_Share/least_common/least_common.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+
+1436477826 source:/media/psf/Home/Documents/Code/C++ code/Codeblocks/least_common/least_common.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+
