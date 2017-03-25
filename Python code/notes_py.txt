@@ -1,6 +1,0 @@
-
-
-pip freeze
-
-scrapy -h
-

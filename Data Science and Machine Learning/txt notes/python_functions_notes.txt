@@ -1,0 +1,158 @@
+		
+
+DEFAULT PYTHON DATA CLEANING BASICS
+text = open("file.csv").read() # basic read-in
+list = text.split('\n') split by lines
+new_list = [] # create list of lists splitting by comma
+for i in list:
+	new_list.append(i.split(',')) # returns a list
+# example summing births for each day of week
+day_counts = {}
+for date in new_list[1:]:
+	if date[3] not in day_counts:
+		day_counts[date[3]] = int(date[4])
+	else: 
+		day_counts[date[3]] += int(date[4])
+
+# can do
+ string_list = open(file_name).read().split('\n')
+
+.append()
+
+
+
+CSV LIBRARY
+import csv
+f = open("file.csv.",'r')
+csvreader = csv.reader(f)
+data = list(csvreader)
+# extract header
+headers = data[0]
+data = data[1:]
+
+
+with open("winequality-red.csv", 'r') as f: # with file open
+	wines = list(csv.reader(f, delimiter=";")) # create new csv.reader obj
+# create datetime.datetime object with dates
+import datetime 
+dates = [datetime.datetime(year=int(row[1]), month=int(row[2]), day=1) for row in data] # list comprehension
+
+# dictionary example
+# rate of gun deaths per 100000 for each race
+mapping = {}
+for r in race_counts:
+	mapping[r] = 0	
+for row in census[1:]:
+	mapping["White"] += int(row[10])
+	mapping["Black"] += int(row[12])
+	mapping["Asian/Pacific Islander"] += int(row[14])
+	mapping["Asian/Pacific Islander"] += int(row[15])
+	mapping["Hispanic"] += int(row[11])
+	mapping["Native American/Native Alaskan"] += int(row[13])
+race_per_hundredk = {}
+for k in race_counts:
+	race_per_hundredk[k] = (race_counts[k] / mapping[k]) * 100000
+print(race_per_hundredk, '\n\n')
+
+NUMPY
+wines = np.array(wines[1:], dtype=np.float)
+wines.shape
+empty_array = np.zeros((3,4)) # Zeros
+np.random.rand(3,4) # Rand
+#DIRECTLY READ CSV WITH NUMPY
+wines = np.genfromtxt("winequality-red.csv", delimiter=";", skip_header=1)
+wines.dtype
+int_wines = wines.astype(int)
+int_wines.dtype.name
+wines[:,11].sum()
+wines.sum(axis=0)
+.mean,.std,.min,.max
+np.transpose(wines)
+wines.ravel() # flatten array to 1-dimension
+wines[1,:].reshape((2,6))
+all_wines = np.vstack((wines, white_wines))
+np.concatenate((wines, white_wines), axis=0)
+
+
+
+PANDAS
+pandas.read_csv("file.csv",encoding=)
+print(type())
+.head(n)
+dimensions = .shape
+dimensions[]
+.loc[]
+.dtypes
+.loc[list] # select nonordered rows
+numrows = .shape[0]
+lastrows = .loc[numrows-5:numrows]
+col = ["colname"]
+type(col)
+twocols = ["name1","name2"] or [list]
+.columns
+colnames = .columns.tolist()
+.endswith("")
+.append
+df["newcol"] = blah
+.sort_values("col",inspace=True,ascending=False)
+pandas uses NaN as opposed to None
+pd.isnull()
+pd.notnull()
+.mean() # filters out NaNs
+len()
+df.pivot_table(index=,values=,aggfunc=)
+df.dropna(axis=0,subset=[])
+.iloc[]
+.reset_index(drop=True)
+df.apply(function)
+.values
+.tolist()
+.index
+.reindex()
+sorted()
+from pandas import Series
+Series(.values, index=)
+.shape[]
+.iloc[ , ]
+.set_index()
+.set_value()
+lambda
+df.apply(lambda x: np.std(x))
+.apply(lambda x: np.mean(x), axis=1) (apply over rows)
+pd.to_numeric(s, errors="coerce")
+df.unique()
+.groupby()
+.agg(np.mean)
+df.merge(data2, on="DBN", how="inner")  # or left, right, outer
+df = df.fillna(df.mean())
+df = df.fillna(0)
+df.groupby("col").agg(numpy.mean)
+series.map(dictionary)
+df.rename(columns=dictionary, inplace=True)
+
+
+
+PYTHON:
+s.zfill(n) left-pad with zeros
+str()
+s.replace()
+s.split()
+dictionary.keys()
+
+
+REGEX:
+re.findall(pattern, string)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

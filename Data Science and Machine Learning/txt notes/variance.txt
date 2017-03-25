@@ -1,0 +1,10 @@
+Variance is the average of the squared deviations from the mean. So for some set of data, you calculate the mean, then you calculate how much each data point deviates from the mean, then you square those deviations, and then finally you average those squared deviations. The standard deviation is the square root of the variance (so standard deviation and the mean have the same units).
+
+The standard deviation generally describes how far your data is distributed about the mean. So a very low standard deviation means that the data is very tightly packed around the mean. A high standard deviation means the data is very spread out from the mean.
+
+
+variance and standard deviation are really nice ways to measure the spread of your data. Standard deviation is a critical statistical concept for several reasons. First, in a normal bell curve distribution, approximately 68 percent of your population will fall within +/- 1 SD from the mean, 95 percent within +/- 2 SD from the mean, and 99.7 percent within +/- 3 SD from the mean.
+
+z-scores
+Second, you can also use standard deviations to calculate z-scores. Z-scores are computed with the following equation: (X - mean)/standard deviation. Z-scores essentially transform all of your data points, whatever units they are measured in, into values expressed in terms of standard deviations. For example, the mean IQ score is 100, and the standard deviation is 15. That means someone with an IQ score of 130 will have a z-score of 2, as (130-100)/15 = 2. Z-scores are incredibly helpful because they allow you to directly compare data that might be measured in different units.
+
