@@ -1,0 +1,11 @@
+Both LDA and Naïve Bayes (NB) are linear classifiers and come under the category of Generative Models which estimates the posterior P(class|x). 
+
+LDA assumes Gaussian class-conditional density models. It also assumes equal covariances. NB assumes variables to be independent. 
+
+The Gaussian NB classifier (Mitchell, 1997; Mitchell et al., 2004) models the conditional probability density of the response patterns given a stimulus class as a Gaussian distribution with a diagonal covariance matrix. The conditional probability P(x|Ci) of response amplitude x given that the stimulus is of class Ci is modeled as a univariate Gaussian. The mean and the variance of the Gaussian are estimated from the training patterns. A test pattern x is classified as the class Ci whose posterior probability P(Ci|x) is maximal among all classes. 
+
+LDA is closely related to NB in that both classifiers assume Gaussian within-class distributions. However, NB relies on a less flexible distributional model in that it assumes zero off-diagonal covariance (i.e. no correlations between variables within a class). An LDA classifier is Bayes-optimal (ignoring estimation error) if the distributions corresponding to the two classes are Gaussian and have equal covariance.
+
+
+(actually in general the naive Bayes classifier is not linear: http://stats.stackexchange.com/questions/142215/how-is-naive-bayes-a-linear-classifier)
+(QDA also obviously nonlinear)
