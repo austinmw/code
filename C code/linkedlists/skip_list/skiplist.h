@@ -8,7 +8,7 @@
 
 // number of lists
 // If you have a 1/X chance of picking the next highest level, 
-//then the max level should be log base X of N, the list size. (1/2 chance ==> lg(N).
+//then the max level should be log base X of N, the list size. (1/2 chance ==> lg(N)).
 int MAXLEVEL = 16; 
 
 

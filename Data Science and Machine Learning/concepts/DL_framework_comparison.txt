@@ -1,0 +1,17 @@
+How does Keras compare to other Deep Learning frameworks like Tensor Flow, Theano, or Torch?
+
+First, let's look at Theano and TensorFlow. These two are very similar to each other, since TensorFlow is re-using many of the key ideas first laid out in Theano. Both are essentially languages for defining abstract, general-purpose computation graphs. They are not quite "deep learning frameworks", and they can be used for much more than deep learning! Keras, on the other end, is an actual deep learning framework: a well-designed API that allows you use to build deep learning models by clipping together high-level building blocks. And since Keras runs on top of TensorFlow or Theano, there is no performance cost to using Keras compared to using the one of these lower-level frameworks.
+
+You can think of Keras as a better UX for doing deep learning in TensorFlow or Theano. If you are familiar with Numpy and Scikit-Learn, then a fair comparison would be to say that Theano and TensorFlow are closer to Numpy, while Keras is closer to Scikit-Learn. However the comparison isn't perfect, since Keras is more flexible than Scikit-Learn: it allows you to define your own machine learning models, rather than just use pre-defined models.
+
+Now, if you want to compare Keras and Torch/nn: they share a lot of the same functionality and philosophy, being high-level, modular libraries for building deep learning models. Torch is a great framework in many respects. But let's look at the differences:
+
+Keras is based on Python and thus integrates well with the massive Python data science ecosystem. Meanwhile Torch is based on Lua --and there isn't such a thing as a "Lua data science ecosystem".
+Keras has a significantly larger community than Torch. This is true among startups and large companies, grad students and hobbyists, but also in the academic world: Keras recently passed Torch in terms of Arxiv mentions per month. Keras is growing fast, while the Torch user base has been shrinking in the past 6 months (with many researchers and organizations moving to TensorFlow/Keras).
+As a consequence, Keras has better documentation, more code examples, and more learning resources to get you started.
+Keras can run on top of TensorFlow and thus benefits from the intense engineering efforts that Google is putting into making TensorFlow the fastest, most scalable deep learning engine out there.
+Overall, you should use Keras rather than Torch if:
+
+You want to benefit from the extensive Python ecosystem in your workflow.
+You are just getting started with deep learning and are looking for good learning resources and simple examples.
+You want a framework that will still be around in the long term.

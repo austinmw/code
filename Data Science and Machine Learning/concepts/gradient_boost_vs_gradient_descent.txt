@@ -1,0 +1,7 @@
+gradient descent search in the parameter space, while gradient boosting search in the function space.
+
+In another word: gradient descent update the parameters of a function step by step to reach a local minimal of loss function; gradient boosting adds new function to existing one in each step to reach a local minimal of loss function.
+
+In the end, the result of gradient descent is still the same function as at the beginning, just with a better parameters. But gradient boosting will end with a totally different functions (additions of multiple functions).
+
+e.g. Adaboost is a special case of gradient boosting.
