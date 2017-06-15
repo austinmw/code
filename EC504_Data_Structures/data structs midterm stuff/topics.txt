@@ -1,0 +1,125 @@
+Topics
+------
+Basic Data Structures
+Algorithm Complexity
+Recurrences
+Sorting
+- comparison sorts (e.g. merge sort)              
+- non-comparison sorts (e.g. bucket sort)       radix sort     heap sort
+Heaps- me
+Hashing -ME
+Binary Search Trees
+BST balancing
+Red-Black Trees
+Skip Lists -ME
+
+Format
+------
+Open book, open notes, open computer, with partner.
+Four questions:
+1 Question on complexity/recurrences
+1 Question on sorting -me
+1 Question on search trees and balancing
+1 Question on design (selection of data structure based on program requirements) -me
+ 
+Submission
+-------------
+ 
+Submission will be though Dropbox. Answers must be typed, but I wont ask you to make compilable/runnable code.
+
+
+
+
+hat we have covered so far
+---------------------------
+
+Week One
+--------
+
+simple linear data structures (stacks, queues, linked lists)
+  Chapter 10
+
+- algorithm complexity notation, especially big O, theta
+  Chapter 3,4
+
+Week Two
+--------
+
+- heaps and heap sort, Chapter 6
+- hashing and dictionaries (in Python), Chapter 11
+- binary search trees: construction and use, Chapter 12
+
+Week Three
+----------
+
+ - linear sort algorithms: counting and bucket sort
+
+Week Four
+---------
+ 
+  - binary search trees
+  - STL containers in C++
+  
+
+
+-complexity
+-queue
+-stack
+-list
+-linked list
+-doubly linked list
+-skip lists
+-dictionary
+-anagrams
+-binary search tree
+-bubble sort
+-merge sort
+-not comparison sorts
+-stdlib sort
+-insertion sort
+-quick sort
+-other bst
+-master method
+-recurrance relations
+
+
+
+
+
+
+
+LINKED LIST
+address of the head node gives access to the complete list
+address in last node is null or 0
+have to traverse from head
+to insert, create node and then link previous and next nodes 
+  need to traverst list to insert also, so O(n) worst-case
+access time is not constant like arrays, worst case O(n)
+in C++ can be implemented with a struct
+Struct Node
+{
+  int data;
+  Node* next;  
+}
+
+
+HEAPS - nearly complete binary tree
+from array: just fill in from 1->n then maxheapify()
+for (i = floor(length(array)/2); i >= 1; i--) {
+  maxheapify(A,i);
+}
+maxheapify(A,i){}
+the last step (when i is at the root) is to simply call Max-Heapify, which fixes the rest of the issues in the Heap. So, to re-cap, first you fill up the heap, top to bottom, left to right (just for visuals - its actually just an array). Next you begin calling Max-Heapify from the bottom (middle of the array) to the top. Max-Heapify will correct any issues within the "sub-tree" that it is working on. As it moves upward, it continually fixes the Heap (all the way to the bottom from where it is currently being called).
+
+
+
+Next:
+Timsort
+binary search tree
+heap sort
+linked list
+master method
+binomial heap? In computer science, a binomial heap is a heap similar to a binary heap but also supports quick merging of two heaps. This is achieved by using a special tree structure. It is important as an implementation of the mergeable heap abstract data type (also called meldable heap), which is a priority queue supporting merge operation.
+hashing
+
+

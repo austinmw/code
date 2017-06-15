@@ -1,0 +1,62 @@
+Midterm Answers
+Austin Welch
+Monil Jhaveri
+
+
+2. Sorting
+
+If you have 10^3 sorters you could look at this as parallel processors and take advantage of
+1000 'cores'. There's 10^7 forms to sort, so each person would get 10^4 forms. One example
+of this type of sort would be Sample Sort which is like a parallelized quicksort.
+If space in the office isn't an issue and since the SSN's are integers, The most efficient
+time-complexity to sort the forms might be a parallel non-comparison sort like Parallel Radix Sort.
+I think this would require an area of 10x8.5x11 for each 10^3 people. One piece of paper is ~0.65 sqft., 
+10 'buckets' per person, 1000 people, so space needs to be ~6,500 sqft. With space to work, this would 
+equate to a square room of about 84x84 ft. 
+Radix sort by itself, on average has a time complexity of O(nk).
+For each person the time complexity to sort the 10^4 forms they are given would then be n=10^4, 
+k = 9, so each of the 10^4 people should achieve a sorted list in ~10s*9*10^4=900,000 seconds, or
+250 hours. After you get 1000 sorted stacks of forms, then you need to merge these sorted stacks. 
+One possible way to merge sorted lists might be with some implementation of a priority queue. You could
+use a recursive divide and conquer algorithm to merge the 10^3 lists of size 10^4, which would have
+a time complexity of O(nlogk) = 1000*log2(10000), so this merge would take ~13288 seconds, or ~3.7 hours.
+Then in total, if you add the time it takes to perform each radix sort with the time it takes to merge
+the sorted stacks, you get 250+3.7= ~ 253.7 hours. 
+So all in all, this would take about the space of a large airplane hanger and about a month of 8 hour 
+work days to sort 10 million forms by social security number. They should probably digitize these forms.
+
+
+3. Search Trees
+
+Assume that both threes have insert(), delete(), search(), size(), sort() are working. 
+Lets say that red black tree (RBT) is m large and binary search tree is n large (BST)
+I need the final product to be sorted. The simplest way to do that is taking the BST and inserting that 
+piece by piece into the RBT. 
+
+for l in n 
+node = BST[l])
+delele(BST[l]) 
+RBT.insert(node) 
+
+I am inserting into a RBT because it the worst case insertion for a RBT is log(m), and will automatically 
+balance and sort itself. The BST however does have to be balanced but it does have to be sorted. 
+However, because you are combining the trees you need to take all n elements of BST and run the insert n times 
+and each insert makes the size of the 1 bigger. The worst case complexity become O(n + log(m + n!))
+
+
+
+4. Design
+
+One way might to hash the contents of each file and check for collisions. If there's a collision then you
+can look at the files individual to compare the contents which reduces the amount of comparisons you
+would need to make substantially. You could use regex to compare files that had collisions and grep in a bash script
+to find the files in the directory structure. At this point you have a string array of unique file names and a 
+2-D string array ofnon-unique file names. With this information you can perform quicksorts in C++ on the 
+string arrays to obtain the final output. 
+
+
+
+
+
+
+
